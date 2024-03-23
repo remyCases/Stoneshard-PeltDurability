@@ -5,6 +5,7 @@
 using ModShardLauncher;
 using ModShardLauncher.Mods;
 using System.Collections.Generic;
+using System.Threading.Tasks.Dataflow;
 
 namespace PeltDurability;
 public class PeltDurability : Mod
@@ -33,6 +34,7 @@ public class PeltDurability : Mod
         bool foundFlaying = false;
         bool foundStart = false;
         bool foundEnd = false;
+        bool once = false;
         string replacementCode = ModFiles.GetCode("gml_GlobalScript_scr_damage_calculation.asm");
 
         foreach (string element in enumerable)
@@ -51,8 +53,9 @@ public class PeltDurability : Mod
             {
                 if (element.Contains("pop.v.v local._pd_loss")) foundEnd = true;
             }
-            else if (foundFlaying && foundStart && foundEnd)
+            else if (foundFlaying && foundStart && foundEnd && !once)
             {
+                once = true;
                 yield return replacementCode;
                 yield return element;
             }
