@@ -5,14 +5,13 @@
 using ModShardLauncher;
 using ModShardLauncher.Mods;
 using System.Collections.Generic;
-using System.Threading.Tasks.Dataflow;
 
 namespace PeltDurability;
 public class PeltDurability : Mod
 {
     public override string Author => "zizani";
     public override string Name => "Pelt Durability";
-    public override string Description => "mod_description";
+    public override string Description => "Customize how the different damage types affect the pelt.";
     public override string Version => "1.0.0.0";
     public override string TargetVersion => "0.8.2.10";
 
@@ -28,40 +27,46 @@ public class PeltDurability : Mod
             .Apply(DamageCalculatorIterator)
             .Save();
     }
-
+    private enum PeltState
+    {
+        StartFunction,
+        Flaying,
+        StartBlock,
+        EndBlock,
+        OutBlock
+    }
     private IEnumerable<string> DamageCalculatorIterator(IEnumerable<string> enumerable)
     {
-        bool foundFlaying = false;
-        bool foundStart = false;
-        bool foundEnd = false;
-        bool once = false;
+        PeltState peltState = PeltState.StartFunction;
         string replacementCode = ModFiles.GetCode("gml_GlobalScript_scr_damage_calculation.asm");
 
         foreach (string element in enumerable)
         {
-            if (!foundFlaying)
+            switch(peltState)
             {
-                if (element.Contains("push.v self.Flaying_Modifier")) foundFlaying = true;
-                yield return element;
-            }
-            else if (foundFlaying && !foundStart)
-            {
-                if (element.Contains("pushloc.v local._slashing")) foundStart = true;
-                yield return element;
-            }
-            else if (foundFlaying && foundStart && !foundEnd)
-            {
-                if (element.Contains("pop.v.v local._pd_loss")) foundEnd = true;
-            }
-            else if (foundFlaying && foundStart && foundEnd && !once)
-            {
-                once = true;
-                yield return replacementCode;
-                yield return element;
-            }
-            else
-            {
-                yield return element;
+                case PeltState.StartFunction:
+                    if (element.Contains("push.v self.Flaying_Modifier")) peltState = PeltState.Flaying; // found clue
+                    yield return element; // not in the block to be modified, yield
+                break;
+
+                case PeltState.Flaying:
+                    if (element.Contains("pushloc.v local._slashing")) peltState = PeltState.StartBlock; // found start of the block
+                    else yield return element; // yield if not
+                break;
+
+                case PeltState.StartBlock:
+                    if (element.Contains("pop.v.v local._pd_loss")) peltState = PeltState.EndBlock; // found end of the block
+                break;
+
+                case PeltState.EndBlock:
+                    yield return replacementCode;
+                    yield return element;
+                    peltState = PeltState.OutBlock;
+                break;
+
+                case PeltState.OutBlock:
+                    yield return element;
+                break;
             }
         }
     } 

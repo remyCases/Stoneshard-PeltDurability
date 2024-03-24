@@ -4,6 +4,7 @@
 
 This mod allow you to customize how damage types interact with pelts using an ini file. 
 For instance you can nullify fire damages dealt to pelt if you want to skin animals while using pyromancy.
+To do this, you just have to modify the value found in the `.ini` file, with `0` meaning that damage will deal no damages to pelt (as Slashing weapons in vanilla) and the more you increase that value, the more damage it will deal to pelt.
 
 ## Installation
 

@@ -1,79 +1,53 @@
 pushloc.v local._slashing
-pushi.e -5
-pushi.e 0
-push.v [array]self.peltloss_modifier
-mul.d.v
+pushglb.v global.pelt_slashing_modifier
+mul.v.v
 pushloc.v local._piercing
-pushi.e -5
-pushi.e 1
-push.v [array]self.peltloss_modifier
-mul.i.v
+pushglb.v global.pelt_piercing_modifier
+mul.v.v
 add.v.v
 pushloc.v local._blunt
-pushi.e -5
-pushi.e 2
-push.v [array]self.peltloss_modifier
-mul.d.v
+pushglb.v global.pelt_blunt_modifier
+mul.v.v
 add.v.v
 pushloc.v local._rending
-pushi.e -5
-pushi.e 3
-push.v [array]self.peltloss_modifier
-mul.i.v
+pushglb.v global.pelt_rending_modifier
+mul.v.v
 add.v.v
 pushloc.v local._fire
-pushi.e -5
-pushi.e 4
-push.v [array]self.peltloss_modifier
-mul.i.v
+pushglb.v global.pelt_fire_modifier
+mul.v.v
 add.v.v
 pushloc.v local._poison
-pushi.e -5
-pushi.e 5
-push.v [array]self.peltloss_modifier
-mul.d.v
+pushglb.v global.pelt_poison_modifier
+mul.v.v
 add.v.v
 pushloc.v local._frost
-pushi.e -5
-pushi.e 6
-push.v [array]self.peltloss_modifier
-mul.d.v
+pushglb.v global.pelt_frost_modifier
+mul.v.v
 add.v.v
 pushloc.v local._caustic
-pushi.e -5
-pushi.e 7
-push.v [array]self.peltloss_modifier
-mul.i.v
+pushglb.v global.pelt_caustic_modifier
+mul.v.v
 add.v.v
 pushloc.v local._shock
-pushi.e -5
-pushi.e 8
-push.v [array]self.peltloss_modifier
-mul.d.v
+pushglb.v global.pelt_shock_modifier
+mul.v.v
 add.v.v
 pushloc.v local._arcane
-pushi.e -5
-pushi.e 9
-push.v [array]self.peltloss_modifier
-mul.d.v
+pushglb.v global.pelt_arcane_modifier
+mul.v.v
 add.v.v
 pushloc.v local._psionic
-pushi.e -5
-pushi.e 10
-push.v [array]self.peltloss_modifier
-mul.i.v
+pushglb.v global.pelt_psionic_modifier
+mul.v.v
 add.v.v
 pushloc.v local._unholy
-pushi.e -5
-pushi.e 11
-push.v [array]self.peltloss_modifier
-mul.i.v
+pushglb.v global.pelt_unholy_modifier
+mul.v.v
 add.v.v
 pushloc.v local._sacred
-pushi.e -5
-pushi.e 12
-push.v [array]self.peltloss_modifier
-mul.i.v
+pushglb.v global.pelt_sacred_modifier
+mul.v.v
 add.v.v
 push.v arg.argument0
 pushi.e -9
