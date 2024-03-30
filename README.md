@@ -2,7 +2,7 @@
 
 ## Description
 
-This mod allow you to customize how damage types interact with pelts using an ini file. 
+This mod allows you to customize how damage types interact with pelts using an ini file. 
 For instance you can nullify fire damages dealt to pelt if you want to skin animals while using pyromancy.
 To do this, you just have to modify the value found in the `.ini` file, with `0` meaning that damage will deal no damages to pelt (as Slashing weapons in vanilla) and the more you increase that value, the more damage it will deal to pelt.
 
@@ -52,9 +52,13 @@ Other mods I've made:
     - [Speedshard_MoneyDungeon](https://github.com/remyCases/SpeedshardMoneyDungeon)
     - [Speedshard_Stances](https://github.com/remyCases/SpeedshardStances)
     - [Character Creation](https://github.com/remyCases/CharacterCreator)
+    - [MoreSaveSlots](https://github.com/remyCases/Stoneshard-MoreSaveSlots)
+    - [Defeat Scenarios](https://github.com/remyCases/Stoneshard-DefeatScenarios)
 
 - Shardpunk:
     - [Shardpunk-BiggerTeam](https://github.com/remyCases/Shardpunk-BiggerTeam)
+    - [Shardpunk-Faster](https://github.com/remyCases/Shardpunk-Faster)
+    - [Shardpunk-MoreSkillLevels](https://github.com/remyCases/Shardpunk-MoreSkillLevels)
 
 - Airship Kingdom Adrift:
     - [ProductionPanel](https://github.com/remyCases/AKAMod_ProdPanel)
