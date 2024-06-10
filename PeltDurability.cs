@@ -12,16 +12,29 @@ public class PeltDurability : Mod
     public override string Author => "zizani";
     public override string Name => "Pelt Durability";
     public override string Description => "Customize how the different damage types affect the pelt.";
-    public override string Version => "1.0.0.0";
+    public override string Version => "1.1.0.0";
     public override string TargetVersion => "0.8.2.10";
 
     public override void PatchMod()
     {
-        // ini variables first
-        Msl.LoadGML("gml_GlobalScript_scr_sessionDataInit")
-            .MatchFrom("scr_sessionDataInit\n{")
-            .InsertBelow(ModFiles, "load_ini.gml")
-            .Save();
+        // add in disclaimer
+        Msl.AddCreditDisclaimerRoom(Name, Author);
+
+        Msl.AddMenu("Damage Multiplier on pelt",
+            new UIComponent(name:"Slashing (%)", associatedGlobal:"pelt_slashing_modifier", UIComponentType.Slider, (0, 300), 75),
+            new UIComponent(name:"Piercing (%)", associatedGlobal:"pelt_piercing_modifier", UIComponentType.Slider, (0, 300), 0),
+            new UIComponent(name:"Blunt (%)", associatedGlobal:"pelt_blunt_modifier", UIComponentType.Slider, (0, 300), 5),
+            new UIComponent(name:"Rending (%)", associatedGlobal:"pelt_rending_modifier", UIComponentType.Slider, (0, 300), 200),
+            new UIComponent(name:"Fire (%)", associatedGlobal:"pelt_fire_modifier", UIComponentType.Slider, (0, 300), 300),
+            new UIComponent(name:"Poison (%)", associatedGlobal:"pelt_poison_modifier", UIComponentType.Slider, (0, 300), 150),
+            new UIComponent(name:"Frost (%)", associatedGlobal:"pelt_frost_modifier", UIComponentType.Slider, (0, 300), 75),
+            new UIComponent(name:"Caustic (%)", associatedGlobal:"pelt_caustic_modifier", UIComponentType.Slider, (0, 300), 300),
+            new UIComponent(name:"Shock (%)", associatedGlobal:"pelt_shock_modifier", UIComponentType.Slider, (0, 300), 150),
+            new UIComponent(name:"Arcane (%)", associatedGlobal:"pelt_arcane_modifier", UIComponentType.Slider, (0, 300), 150),
+            new UIComponent(name:"Psionic (%)", associatedGlobal:"pelt_psionic_modifier", UIComponentType.Slider, (0, 300), 0),
+            new UIComponent(name:"Unholy (%)", associatedGlobal:"pelt_unholy_modifier", UIComponentType.Slider, (0, 300), 300),
+            new UIComponent(name:"Sacred (%)", associatedGlobal:"pelt_sacred_modifier", UIComponentType.Slider, (0, 300), 0)
+        );
             
         Msl.LoadAssemblyAsString("gml_GlobalScript_scr_damage_calculation")
             .Apply(DamageCalculatorIterator)
