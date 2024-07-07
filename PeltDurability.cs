@@ -11,7 +11,7 @@ public class PeltDurability : Mod
     public override string Author => "zizani";
     public override string Name => "Pelt Durability";
     public override string Description => "Customize how the different damage types affect the pelt.";
-    public override string Version => "1.1.0.0";
+    public override string Version => "1.1.0";
     public override string TargetVersion => "0.8.2.10";
 
     public override void PatchMod()
