@@ -4,7 +4,6 @@
 
 using ModShardLauncher;
 using ModShardLauncher.Mods;
-using System.Collections.Generic;
 
 namespace PeltDurability;
 public class PeltDurability : Mod
