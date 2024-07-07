@@ -16,7 +16,7 @@ A [video](https://www.youtube.com/watch?v=_J0oJYGi38E&t=13s&ab_channel=Nylux) wa
 
 ### Installing MSL
 
-- Download the latest release of [MSL](https://modshardteam.github.io/ModShardLauncher).
+- Download the latest release of [MSL](https://github.com/ModShardTeam/ModShardLauncher).
 - Unzip it.
 - (Optional) Rename the data.win file in the Stoneshard folder with an other name so you'll have a backup if something went wrong.
 
