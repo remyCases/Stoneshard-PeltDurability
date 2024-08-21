@@ -1,80 +1,17 @@
-pushloc.v local._slashing
-pushglb.v global.pelt_slashing_modifier
-push.d 100
-div.i.v
-mul.v.v
-pushloc.v local._piercing
-pushglb.v global.pelt_piercing_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._blunt
-pushglb.v global.pelt_blunt_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._rending
-pushglb.v global.pelt_rending_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._fire
-pushglb.v global.pelt_fire_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._poison
-pushglb.v global.pelt_poison_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._frost
-pushglb.v global.pelt_frost_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._caustic
-pushglb.v global.pelt_caustic_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._shock
-pushglb.v global.pelt_shock_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._arcane
-pushglb.v global.pelt_arcane_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._psionic
-pushglb.v global.pelt_psionic_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
-pushloc.v local._unholy
-pushglb.v global.pelt_unholy_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
 pushloc.v local._sacred
-pushglb.v global.pelt_sacred_modifier
-push.d 100
-div.i.v
-mul.v.v
-add.v.v
+pushloc.v local._unholy
+pushloc.v local._psionic
+pushloc.v local._arcane
+pushloc.v local._shock
+pushloc.v local._caustic
+pushloc.v local._frost
+pushloc.v local._poison
+pushloc.v local._fire
+pushloc.v local._rending
+pushloc.v local._blunt
+pushloc.v local._piercing
+pushloc.v local._slashing
+call.i gml_Script_scr_pd_damage_pelt_calculation(argc=13)
 push.v arg.argument0
 pushi.e -9
 push.v [stacktop]self.max_hp

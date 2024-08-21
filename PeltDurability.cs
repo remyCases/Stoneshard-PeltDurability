@@ -1,6 +1,6 @@
 ﻿// Copyright (C)
 // See LICENSE file for extended copyright information.
-// This file is part of the repository from .
+// This file is part of the repository from https://github.com/remyCases/Stoneshard-PeltDurability.
 
 using ModShardLauncher;
 using ModShardLauncher.Mods;
@@ -34,6 +34,28 @@ public class PeltDurability : Mod
             new UIComponent(name:"Unholy (%)", associatedGlobal:"pelt_unholy_modifier", UIComponentType.Slider, (0, 300), 300),
             new UIComponent(name:"Sacred (%)", associatedGlobal:"pelt_sacred_modifier", UIComponentType.Slider, (0, 300), 0)
         );
+
+        Msl.AddFunction(@"
+function scr_pd_damage_pelt_calculation(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8, argument9, argument10, argument11, argument12)
+{
+    var _pd_loss_modifier = 0;
+    
+    _pd_loss_modifier += argument0 * global.pelt_slashing_modifier / 100;
+    _pd_loss_modifier += argument1 * global.pelt_piercing_modifier / 100;
+    _pd_loss_modifier += argument2 * global.pelt_blunt_modifier / 100;
+    _pd_loss_modifier += argument3 * global.pelt_rending_modifier / 100;
+    _pd_loss_modifier += argument4 * global.pelt_fire_modifier / 100;
+    _pd_loss_modifier += argument5 * global.pelt_poison_modifier / 100;
+    _pd_loss_modifier += argument6 * global.pelt_frost_modifier / 100;
+    _pd_loss_modifier += argument7 * global.pelt_caustic_modifier / 100;
+    _pd_loss_modifier += argument8 * global.pelt_shock_modifier / 100;
+    _pd_loss_modifier += argument9 * global.pelt_arcane_modifier / 100;
+    _pd_loss_modifier += argument10 * global.pelt_psionic_modifier / 100;
+    _pd_loss_modifier += argument11 * global.pelt_unholy_modifier / 100;
+    _pd_loss_modifier += argument12 * global.pelt_sacred_modifier / 100;
+
+    return _pd_loss_modifier;
+}", "scr_pd_damage_pelt_calculation");
             
         Msl.LoadAssemblyAsString("gml_GlobalScript_scr_damage_calculation")
             .Apply(DamageCalculatorIterator)
